@@ -1,0 +1,8 @@
+package com.JDBC.example;
+
+public class Sqlutil {
+	final String DB_USER = "root";
+	final String DB_PASSWROD = "cdac";
+	
+
+}
