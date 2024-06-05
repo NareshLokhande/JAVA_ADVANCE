@@ -12,7 +12,7 @@ public class Sqlutil {
 	static void connectDb() {
 		try{
 			Class.forName(DRIVER_CLASS);
-			Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWROD)
+			Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWROD);
 			Statement stmt  = conn.createStatement();
 		}catch (Exception ex) {
 			System.out.println(ex);
