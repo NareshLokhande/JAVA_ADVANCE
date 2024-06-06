@@ -13,11 +13,11 @@ import com.studentcrud.daoimpl.StudentDAOImpl;
  * Servlet implementation class DeleteStudentController
  */
 
-public class DeleteStudentController extends HttpServlet {
+public class UpdateStudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	StudentDAOImpl studentDAOImpl;
 
-	public DeleteStudentController() {
+	public UpdateStudentController() {
 		super();
 		studentDAOImpl = new StudentDAOImpl();
 	}
@@ -30,10 +30,10 @@ public class DeleteStudentController extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			int result = studentDAOImpl.remove(id);
 			if(result>0) {
-				printWriter.println("<h3>Student Deleted</h3>");
+				printWriter.println("<h3>Student Updated</h3>");
 			}
 			else {
-				printWriter.println("<h3>Failed to delete student</h3>");
+				printWriter.println("<h3>Failed to update student info</h3>");
 			}
 			
 		} catch (Exception e) {

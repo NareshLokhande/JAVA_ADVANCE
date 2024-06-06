@@ -10,5 +10,5 @@ public interface StudentDAO {
 	List<Student> getAll();
 	Student getById(int id);
 	int remove(int id);
-	
+	int update(int id, Student student);
 }

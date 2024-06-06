@@ -1,7 +1,6 @@
 package com.studentcrud.daoimpl;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.studentcrud.dao.StudentDAO;
@@ -68,7 +67,6 @@ public class StudentDAOImpl implements StudentDAO {
 					student.setMarks(rs.getFloat("marks"));
 					student.setPhone(rs.getString("phone"));
 					student.setGender(rs.getString("gender"));
-//					Student student = new Student(id, name, city, marks, phone, gender);
 				}
 			}
 
@@ -87,6 +85,20 @@ public class StudentDAOImpl implements StudentDAO {
 			SqlUtil.connectDb();
 			String qry = "Delete from student where id=" + id;
 			result = SqlUtil.delete(qry);
+			SqlUtil.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return result;
+	}
+
+	@Override
+	public int update(int id, Student student) {
+		int result=-1;
+		try {
+			SqlUtil.connectDb();
+			String qry = "Update student set id='"+student.getId()+"' name='"+student.getName()+"' city '"+student.getCity()+"' marks='"+student.getMarks()+"' phone='"+student.getPhone()+"' gender='"+student.getGender()+"'";
+			result = SqlUtil.update(qry);
 			SqlUtil.close();
 		} catch (Exception e) {
 			System.out.println(e);

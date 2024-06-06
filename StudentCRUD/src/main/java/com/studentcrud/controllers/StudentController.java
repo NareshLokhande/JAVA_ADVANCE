@@ -16,11 +16,13 @@ import com.studentcrud.models.Student;
 /**
  * Servlet implementation class StudentController
  */
+
 public class StudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	StudentDAOImpl studentDAOImpl;
+	
 	public StudentController() {
-		super();
 		studentDAOImpl = new StudentDAOImpl();
 	}
 
@@ -31,7 +33,7 @@ public class StudentController extends HttpServlet {
 		try {
 			List<Student> studentsList = studentDAOImpl.getAll();
 			
-			printWriter.println("<table border='1' cellpadding='10'>");
+			printWriter.println("<table border='1' cellspacing='0' cellpadding='10'>");
 			printWriter.println("<tr>");
 			printWriter.println("<th>ID</th>");
 			printWriter.println("<th>Name</th>");
@@ -52,7 +54,7 @@ public class StudentController extends HttpServlet {
 				printWriter.println("<td>" + student.getMarks() + "</td>");
 				printWriter.println("<td>" + student.getCity() + "</td>");
 				printWriter.println("<td>" + student.getGender() + "</td>");
-				printWriter.println("<td><a href='/StudentDeleteController?id="+(student.getId())+"'>Delete</a></td>");
+				printWriter.println("<td><a href='DeleteStudentController?id="+student.getId()+"'>Delete</a></td>");
 				printWriter.println("<tr>");
 
 			}
