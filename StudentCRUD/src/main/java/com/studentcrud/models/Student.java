@@ -18,6 +18,9 @@ public class Student {
 		this.city = city;
 	}
 
+	public Student() {}
+
+
 	public int getId() {
 		return id;
 	}

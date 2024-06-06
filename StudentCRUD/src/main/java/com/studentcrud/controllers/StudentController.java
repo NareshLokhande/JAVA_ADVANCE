@@ -1,0 +1,96 @@
+package com.studentcrud.controllers;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
+
+import com.studentcrud.daoimpl.StudentDAOImpl;
+import com.studentcrud.models.Student;
+
+/**
+ * Servlet implementation class StudentController
+ */
+public class StudentController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	StudentDAOImpl studentDAOImpl;
+	public StudentController() {
+		super();
+		studentDAOImpl = new StudentDAOImpl();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter printWriter = response.getWriter();
+		try {
+			List<Student> studentsList = studentDAOImpl.getAll();
+			
+			printWriter.println("<table border='1' cellpadding='10'>");
+			printWriter.println("<tr>");
+			printWriter.println("<th>ID</th>");
+			printWriter.println("<th>Name</th>");
+			printWriter.println("<th>Phone</th>");
+			printWriter.println("<th>Marks</th>");
+			printWriter.println("<th>City</th>");
+			printWriter.println("<th>Gender</th>");
+			printWriter.println("<th>Action</th>");
+			printWriter.println("<tr>");
+
+			Iterator<Student> studentIterator = studentsList.iterator();
+			while (studentIterator.hasNext()) {
+				Student student = studentIterator.next();
+				printWriter.println("<tr>");
+				printWriter.println("<td>" + student.getId() + "</td>");
+				printWriter.println("<td>" + student.getName() + "</td>");
+				printWriter.println("<td>" + student.getPhone() + "</td>");
+				printWriter.println("<td>" + student.getMarks() + "</td>");
+				printWriter.println("<td>" + student.getCity() + "</td>");
+				printWriter.println("<td>" + student.getGender() + "</td>");
+				printWriter.println("<td><a href='/StudentDeleteController?id="+(student.getId())+"'>Delete</a></td>");
+				printWriter.println("<tr>");
+
+			}
+			
+			printWriter.println("</table>");
+		} catch (Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			printWriter.println("<h3>Something went wrong...</h3>");
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter printWriter = response.getWriter();
+
+		try {
+			Student student = new Student();
+			student.setId(Integer.parseInt(request.getParameter("id")));
+			student.setName(request.getParameter("name"));
+			student.setPhone(request.getParameter("phone"));
+			student.setCity(request.getParameter("city"));
+			student.setGender(request.getParameter("gender"));
+			student.setMarks(Float.parseFloat(request.getParameter("marks")));
+
+			StudentDAOImpl studentDAOImpl = new StudentDAOImpl();
+			int result = studentDAOImpl.save(student);
+			if (result > 0) {
+				printWriter.println("<h3> Student Registered</h3>");
+			} else {
+				printWriter.println("<h3> Student Registration failed</h3>");
+			}
+		} catch (Exception e) {
+			printWriter.println("<h3> Something Went Wrong....</h3>");
+		}
+
+	}
+
+}

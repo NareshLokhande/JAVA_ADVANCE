@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class SqlUtil {
 	final static String DB_USER = "root";
 	final static String DB_PASSWORD = "cdac";
-	final static String DB_NAME = "cdac_java";
+	final static String DB_NAME = "school";
 	final static String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
 	final static String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 	static Statement stmt;
