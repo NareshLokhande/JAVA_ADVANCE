@@ -1,6 +1,10 @@
 package com.studentcrud.daoimpl;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.studentcrud.dao.StudentDAO;
@@ -8,6 +12,13 @@ import com.studentcrud.models.Student;
 import com.studentcrud.utils.SqlUtil;
 
 public class StudentDAOImpl implements StudentDAO {
+	final static String DB_USER = "root";
+	final static String DB_PASSWORD = "cdac";
+	final static String DB_NAME = "school";
+	final static String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
+	final static String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+	static Statement stmt;
+	static Connection conn;
 
 	@Override
 	public int save(Student student) {
@@ -97,7 +108,8 @@ public class StudentDAOImpl implements StudentDAO {
 		int result=-1;
 		try {
 			SqlUtil.connectDb();
-			String qry = "Update student set id='"+student.getId()+"' name='"+student.getName()+"' city '"+student.getCity()+"' marks='"+student.getMarks()+"' phone='"+student.getPhone()+"' gender='"+student.getGender()+"'";
+			String qry = "UPDATE student SET name='"+student.getName()+"' city '"+student.getCity()+"' marks='"+student.getMarks()+"' phone='"+student.getPhone()+"' gender='"+student.getGender()+"' WHERE id='"+student.getId()+"'";
+			
 			result = SqlUtil.update(qry);
 			SqlUtil.close();
 		} catch (Exception e) {
@@ -105,5 +117,30 @@ public class StudentDAOImpl implements StudentDAO {
 		}
 		return result;
 	}
+	
+//	 @Override
+//	    public int update(int id, Student student) {
+//	        int result = -1;
+//	        String qry = "UPDATE student SET name = ?, city = ?, marks = ?, phone = ?, gender = ? WHERE id = ?";
+//
+//	        try (
+//	        		Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+//	        		PreparedStatement pstmt = conn.prepareStatement(qry)) {
+//
+//	            pstmt.setString(1, student.getName());
+//	            pstmt.setString(2, student.getCity());
+//	            pstmt.setFloat(3, student.getMarks());
+//	            pstmt.setString(4, student.getPhone());
+//	            pstmt.setString(5, student.getGender());
+//	            pstmt.setInt(6, id);
+//
+//	            result = pstmt.executeUpdate();
+//
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        }
+//
+//	        return result;
+//	    }
 
 }

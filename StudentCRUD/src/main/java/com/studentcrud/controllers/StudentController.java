@@ -42,6 +42,7 @@ public class StudentController extends HttpServlet {
 			printWriter.println("<th>City</th>");
 			printWriter.println("<th>Gender</th>");
 			printWriter.println("<th>Action</th>");
+			printWriter.println("<th>Action</th>");
 			printWriter.println("<tr>");
 
 			Iterator<Student> studentIterator = studentsList.iterator();
@@ -55,6 +56,7 @@ public class StudentController extends HttpServlet {
 				printWriter.println("<td>" + student.getCity() + "</td>");
 				printWriter.println("<td>" + student.getGender() + "</td>");
 				printWriter.println("<td><a href='DeleteStudentController?id="+student.getId()+"'>Delete</a></td>");
+				printWriter.println("<td><a href='UpdateStudentController?id="+student.getId()+"'>Update</a></td>");
 				printWriter.println("<tr>");
 
 			}

@@ -9,6 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <description></description>
     <display-name>StudentController</display-name>
@@ -19,6 +20,7 @@
     <servlet-name>StudentController</servlet-name>
     <url-pattern>/StudentController</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>DeleteStudentController</display-name>
@@ -29,4 +31,13 @@
     <servlet-name>DeleteStudentController</servlet-name>
     <url-pattern>/DeleteStudentController</url-pattern>
   </servlet-mapping>
+  
+      <servlet>
+        <servlet-name>UpdateStudentController</servlet-name>
+        <servlet-class>com.studentcrud.controllers.UpdateStudentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateStudentController</servlet-name>
+        <url-pattern>/UpdateStudentController</url-pattern>
+    </servlet-mapping>
 </web-app>

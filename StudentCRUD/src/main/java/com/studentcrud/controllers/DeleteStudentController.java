@@ -26,6 +26,7 @@ public class DeleteStudentController extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter printWriter = response.getWriter();
+		
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			int result = studentDAOImpl.remove(id);
