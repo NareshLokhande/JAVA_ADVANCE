@@ -31,6 +31,7 @@ public class DeleteStudentController extends HttpServlet {
 			int result = studentDAOImpl.remove(id);
 			if(result>0) {
 				printWriter.println("<h3>Student Deleted</h3>");
+				response.sendRedirect("StudentController");
 			}
 			else {
 				printWriter.println("<h3>Failed to delete student</h3>");
