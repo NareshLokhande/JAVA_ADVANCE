@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 
@@ -16,6 +16,16 @@
 		<input type="submit" value="Login">
 		<br><br>
 	</form>
-	
+
+<%
+	if(request.getAttribute("loginError") != null){
+		%>
+		<h4><%=request.getAttribute("loginError") %></h4>
+		<%
+	}
+	else{
+		
+	}
+%>
 </body>
 </html>

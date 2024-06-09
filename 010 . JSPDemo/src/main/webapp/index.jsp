@@ -12,10 +12,13 @@
 </style>
 </head>
 <body>
+
 <div class="center">
 	<a href="sum.jsp">Add</a> 
 	<br><br>
 	<a href="table.jsp"> Show Table</a>
+	<br><br>
+	<a href="login.jsp">login</a>
 </div>
 
 	<h1>This is JSP Demo</h1>

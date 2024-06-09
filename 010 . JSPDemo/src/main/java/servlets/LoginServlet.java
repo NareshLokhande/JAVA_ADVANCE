@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public LoginServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 			if (username.equals("admin") && password.equals("admin123")) {
 				response.sendRedirect("table.jsp");
 			} else {
+				request.setAttribute("loginError", "Invalid Credentials");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 				requestDispatcher.forward(request, response);
 			}

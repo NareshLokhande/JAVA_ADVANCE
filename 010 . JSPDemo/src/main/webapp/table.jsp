@@ -31,9 +31,7 @@
 			<th>Id</th>
 			<th>Name</th>
 			<th>Phone</th>
-		</tr>
-	
-	
+		</tr>	
 	<%
 	for(int i=0; i<students.length; i++){
 		%>
