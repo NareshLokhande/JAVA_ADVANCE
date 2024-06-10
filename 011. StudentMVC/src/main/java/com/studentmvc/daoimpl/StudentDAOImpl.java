@@ -91,7 +91,7 @@ public class StudentDAOImpl implements StudentDAO {
 		int result = -1;
 		try {
 			SqlUtil.connectDb();
-			SqlUtil.stmt = SqlUtil.conn.prepareStatement("DELETE * FROM student WHERE id=?");
+			SqlUtil.stmt = SqlUtil.conn.prepareStatement("DELETE FROM student WHERE id=?");
 			SqlUtil.stmt.setInt(1, id);
 			result = SqlUtil.delete();
 			SqlUtil.close();

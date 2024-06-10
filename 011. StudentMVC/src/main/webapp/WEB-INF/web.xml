@@ -19,4 +19,14 @@
     <servlet-name>StudentController</servlet-name>
     <url-pattern>/StudentController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteStudentController</display-name>
+    <servlet-name>DeleteStudentController</servlet-name>
+    <servlet-class>com.studentmvc.controller.DeleteStudentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteStudentController</servlet-name>
+    <url-pattern>/DeleteStudentController</url-pattern>
+  </servlet-mapping>
 </web-app>
