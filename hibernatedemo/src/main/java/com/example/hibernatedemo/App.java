@@ -27,12 +27,12 @@ public class App
 //        session.save(p);
         
 //        Employee emp = new Employee();
-//        emp.setName("Naresh");
-//        emp.setPhone("9822316707");
+//        emp.setName("Shashi");
+//        emp.setPhone("87884547");
 //        emp.setSalary(10000);
 //        session.save(emp);
         
-        Employee emp = session.get(Employee.class, 1);
+        Employee emp = session.get(Employee.class, 2);
         System.out.println(emp);
         
         txn.commit();
