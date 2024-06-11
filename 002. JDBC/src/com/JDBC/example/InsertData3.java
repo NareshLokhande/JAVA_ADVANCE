@@ -17,11 +17,11 @@ public class InsertData3 {
 			Scanner sc = new Scanner(System.in);
 			String ans = "";
 			do {
-				System.out.println("Product Name: ");
+				System.out.print("Product Name: ");
 				String name = sc.nextLine();
-				System.out.println("Product Price: ");
+				System.out.print("Product Price: ");
 				double price = Double.parseDouble(sc.nextLine());
-				System.out.println("Product Quantity: ");
+				System.out.print("Product Quantity: ");
 				int qty = Integer.parseInt(sc.nextLine());
 
 				String qry = "INSERT INTO tbl_product(name, price, quantity) VALUES ('" + name + "', " + price + ","
