@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,9 +14,13 @@
   <body>
     <div class="container mt-5">
     	<div class="alert alert-primary" role="alert">
-  			Welcome to Student CRUD application
+	    	<c:out value="Welcome to Student CRUD application"></c:out>
 		</div>
     </div>
+    
+    <a href="jstl-demo.jsp" class="btn btn-success">JSTL</a>
+    <a href="GetStudentController" class="btn btn-success">Fetch data</a>
+    
     <div class="container mt-5">
     	<div class="row">
     		<div class="col-lg-4">

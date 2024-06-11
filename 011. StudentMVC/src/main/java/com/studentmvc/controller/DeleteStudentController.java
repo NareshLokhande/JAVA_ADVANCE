@@ -28,6 +28,7 @@ public class DeleteStudentController extends HttpServlet {
 			
 			request.setAttribute("studentsList", studentServiceImpl.getAll());
 			RequestDispatcher rd = request.getRequestDispatcher("student-list.jsp");
+			
 			if (result > 0) {
 				request.setAttribute("msg", "Student Deleted !");
 			} else {
