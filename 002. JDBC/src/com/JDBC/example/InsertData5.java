@@ -3,6 +3,8 @@ package com.JDBC.example;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class InsertData5 {
@@ -16,7 +18,7 @@ public class InsertData5 {
 			// Prepared statement
 			String qry = "INSERT INTO tbl_product(name, price, quantity) VALUES (?, ?, ?)";
 			
-			PreparedStatement stmt = conn.prepareStatement(qry);
+			PreparedStatement stmt = conn.prepareStatement(qry, Statement.RETURN_GENERATED_KEYS);
 			Scanner sc = new Scanner(System.in);
 			String ans = "";
 			
@@ -33,7 +35,12 @@ public class InsertData5 {
 			stmt.setInt(3, qty);
 			stmt.executeUpdate();
 			
-			System.out.println(name+ " is inserted !!");
+			int id=0;
+			ResultSet rs = stmt.getGeneratedKeys();
+			if(rs.next())
+				id = rs.getInt(1);			
+			
+			System.out.println("Record inserted, Product id : "+id);
 			System.out.println("Continue ? (y/n)");
 			ans = sc.nextLine();
 
