@@ -23,7 +23,6 @@
     </div>
     <div class="container mt-5">
     	<%
-    	
     		if(request.getAttribute("studentsList")!=null){
     			List<Student> students =(ArrayList<Student>)request.getAttribute("studentsList");
     			%>
