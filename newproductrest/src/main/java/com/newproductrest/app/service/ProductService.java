@@ -24,7 +24,7 @@ public class ProductService{
 	}
 
 	public Optional<Product> findById(int id) {
-		Optional<Product> op= productRepository.findById(id);
+		Optional<Product> op = productRepository.findById(id);
 		return op;
 	}
 	
@@ -37,6 +37,6 @@ public class ProductService{
 	}
 	
 	public List<Product> findByName(String name){
-		return ProductRepository.findByName();
+		return productRepository.findByName(name);
 	}
 }

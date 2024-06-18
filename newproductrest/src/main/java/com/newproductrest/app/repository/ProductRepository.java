@@ -8,10 +8,6 @@ import com.newproductrest.app.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 
-	static List<Product> findByName() {
-
-		return null;
-	}
-
+	List<Product> findByName(String name);
 
 }
