@@ -10,42 +10,52 @@
 <head>
 <meta charset="UTF-8">
 <title>Pagination</title>
+
+<link rel="stylesheet" href="pagination.css">
+
 </head>
 <body>
-<%
-	//JDBC code
-	
+	<%
+
 	int offset = 0;
 
+	//JDBC code
 	Connection conn = null;
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cdac", "root", "cdac");
 
-		String qry = "SELECT * FROM tbl_product LIMIT 5 offset ?";
+		String qry = "SELECT * FROM tbl_product limit 5 offset ?";
 		PreparedStatement pstmt = conn.prepareStatement(qry);
 		pstmt.setInt(1, offset);
 		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next()){
-			if(rs.next()){
-				int id = rs.getInt(1); 
-				String name = rs.getString(2);
-				double price = rs.getDouble(3);
-				int quantity = rs.getInt(4);
-%>
-	<div>
-		<%=id %>
-		<%=name %>
-		<%=price %>
-		<%=quantity %>
+
+		while (rs.next()) {
+			int id = rs.getInt(1);
+			String name = rs.getString(2);
+			double price = rs.getDouble(3);
+			int quantity = rs.getInt(4);
+	%>
+	<div class="card">
+		<div class="container">
+			<h4><b><%=id%></b>
+			</h4>
+			<p><%=name %></p>
+			<p><%=price%></p>
+			<p><%=quantity%></p>
+		</div>
 	</div>
-<%
-			}
-		}
+	<%
+	}
 	} catch (Exception e) {
-		e.printStackTrace();
+	e.printStackTrace();
 	}
 	%>
+	
+	<div class="links">
+		<a href="#">Previous</a>
+		<a href="#">Next</a>
+	</div>
+	
 </body>
 </html>
