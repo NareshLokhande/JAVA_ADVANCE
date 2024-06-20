@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export function saveProduct(product){
-    return axios.post('http://localhotst:8080/products/',product);
+export function saveProduct(product) {
+  return axios.post("http://localhost:8080/products/", product);
 }
 
 export function getAllProducts() {
-  return axios.get('http://localhotst:8080/products/');
+  return axios.get("http://localhost:8080/products/");
 }
 
 export function removeProduct(id) {
-  return axios.get(`http://localhotst:8080/products/{id}`);
+  return axios.delete(`http://localhost:8080/products/${id}`);
 }

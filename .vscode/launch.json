@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-NewproductrestApplication<newproductrest>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.newproductrest.app.NewproductrestApplication",
+            "projectName": "newproductrest",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

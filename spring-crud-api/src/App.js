@@ -1,12 +1,13 @@
 
 import './App.css';
 import { ProductForm } from './components/ProductForm';
-import { Productslist } from './components/ProductsList';
+import { ProductsList } from './components/ProductsList';
 
 function App() {
   return (
     <>
-      <Productslist/>
+      <ProductsList/>
+      <br /><br />
       <ProductForm/>
     </>
   );
