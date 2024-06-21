@@ -2,9 +2,11 @@ package com.newproductrest.app.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +32,20 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
+	@Autowired
+	private MessageSource messageSource;
+	
+	@GetMapping("/greet/{name}")
+	public ResponseEntity<?> greet(@PathVariable("name"),  @RequestHeader(name="Accept-Language",required=false)Locale locale){
+		String message = messageSource.getMessage("greeting.message",new Object[] {name},null, locale);
+		HashMap<String, String> responseBody = new HashMap<>();
+		responseBody.put(ResponseKey.MESSAGE, message);
+		return new ResponseEntity<>(responseBody,HttpStatus.OK);
+	}
+	
+	
 	@GetMapping("/")
-	public ResponseEntity<Object> findAll() {
+	public ResponseEntity<?> findAll(  @RequestHeader(name="Accept-Language",required=false)Locale locale){
 		try {
 			List<Product> productsList = productService.findAll();
 
